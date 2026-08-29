@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/utils/app_colors.dart';
 import 'package:movie_app/core/utils/app_styles.dart';
 import 'package:movie_app/features/auth/presentation/widgets/check_box.dart';
@@ -29,7 +30,7 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
             });
           },
         ),
-        const SizedBox(width: 12),
+        SizedBox(width: 12.w),
         Expanded(
           child: Text.rich(
             TextSpan(

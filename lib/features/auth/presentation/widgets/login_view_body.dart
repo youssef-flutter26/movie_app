@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/core/utils/app_images.dart';
 import 'package:movie_app/core/utils/app_styles.dart';
@@ -15,32 +16,32 @@ class LoginViewBody extends StatelessWidget {
     return SafeArea(
       child: SizedBox.expand(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          padding: EdgeInsets.symmetric(horizontal: 24.0.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SvgPicture.asset(Assets.imagesCinemax, height: 88),
-              const SizedBox(height: 8),
+              SvgPicture.asset(Assets.imagesCinemax, height: 88.h),
+              SizedBox(height: 8.h),
               Text(
                 'Enter your registered\nPhone Number to Sign Up',
                 textAlign: TextAlign.center,
                 style: TextStyles.semiBold16.copyWith(
                   color: const Color(0xFF92929D),
-                  height: 1.4,
+                  height: 1.4.h,
                 ),
               ),
-              SizedBox(height: 54),
+              SizedBox(height: 54.h),
               InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, SignUp.routeName);
                 },
                 child: CustomButton(text: 'Sign Up'),
               ),
-              SizedBox(height: 24),
+              SizedBox(height: 24.h),
 
               HaveReadyAccount(),
-              SizedBox(height: 32),
+              SizedBox(height: 32.h),
 
               Text(
                 'Or Sign In with',
@@ -48,7 +49,7 @@ class LoginViewBody extends StatelessWidget {
                   color: const Color(0xFF92929D),
                 ),
               ),
-              SizedBox(height: 32),
+              SizedBox(height: 32.h),
 
               SignWithSocialMedia(),
             ],

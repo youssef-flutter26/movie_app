@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/utils/app_colors.dart';
 import 'package:movie_app/core/utils/app_styles.dart';
 
@@ -9,10 +10,10 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 50,
+      height: 50.h,
       decoration: BoxDecoration(
         color: AppColors.ksecondaryColor,
-        borderRadius: BorderRadius.circular(32),
+        borderRadius: BorderRadius.circular(32.r),
       ),
       child: Center(
         child: Text(

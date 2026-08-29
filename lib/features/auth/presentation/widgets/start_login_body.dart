@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/utils/app_colors.dart';
 import 'package:movie_app/core/utils/app_styles.dart';
 import 'package:movie_app/core/widgets/custom_text_field.dart';
@@ -22,14 +23,14 @@ class _StartLoginBodyState extends State<StartLoginBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      padding: EdgeInsets.symmetric(vertical: 20.0.h),
       child: Form(
         key: formKey,
         autovalidateMode: autovalidateMode,
         child: Column(
           children: [
             Center(child: Text('Hi, Tiffany', style: TextStyles.bold23)),
-            SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Text(
               'Welcome back! Please enter\n your details.',
               textAlign: TextAlign.center,
@@ -40,13 +41,13 @@ class _StartLoginBodyState extends State<StartLoginBody> {
               },
               labelText: 'Email Address',
             ),
-            SizedBox(height: 32),
+            SizedBox(height: 32.h),
             PasswordField(
               onSaved: (value) {
                 password = value!;
               },
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 10.h),
 
             GestureDetector(
               onTap: () {
@@ -64,10 +65,10 @@ class _StartLoginBodyState extends State<StartLoginBody> {
                 ],
               ),
             ),
-            SizedBox(height: 32),
+            SizedBox(height: 32.h),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              padding: EdgeInsets.symmetric(horizontal: 24.0.w),
               child: GestureDetector(
                 onTap: () {
                   if (formKey.currentState!.validate()) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomPageViewItem extends StatelessWidget {
   const CustomPageViewItem({
@@ -33,24 +34,24 @@ class CustomPageViewItem extends StatelessWidget {
             left: 0,
             right: 0,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     title,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   Text(
                     subtitle,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.grey, fontSize: 12),
+                    style: TextStyle(color: Colors.grey, fontSize: 12.sp),
                   ),
                 ],
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/utils/app_styles.dart';
 import 'package:movie_app/core/widgets/custom_text_field.dart';
 import 'package:movie_app/core/widgets/password_field.dart';
@@ -30,12 +31,12 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         child: Column(
           children: [
             Center(child: Text('Lets get started', style: TextStyles.bold23)),
-            SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Text(
               'The latest movies and series are here',
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 32),
+            SizedBox(height: 32.h),
 
             CustomTextField(
               onSaved: (value) {
@@ -43,7 +44,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               },
               labelText: 'Full Name ',
             ),
-            SizedBox(height: 32),
+            SizedBox(height: 32.h),
 
             CustomTextField(
               onSaved: (value) {
@@ -51,26 +52,26 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               },
               labelText: 'Email Address',
             ),
-            SizedBox(height: 32),
+            SizedBox(height: 32.h),
             PasswordField(
               onSaved: (value) {
                 password = value!;
               },
             ),
-            SizedBox(height: 32),
+            SizedBox(height: 32.h),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 22.0),
+              padding: EdgeInsets.symmetric(horizontal: 22.0.w),
               child: TermsAndConditionsWidget(
                 onChanged: (value) {
                   isTermsAccepted = value;
                 },
               ),
             ),
-            SizedBox(height: 36),
+            SizedBox(height: 36.h),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              padding: EdgeInsets.symmetric(horizontal: 24.0.w),
               child: GestureDetector(
                 onTap: () {
                   if (formKey.currentState!.validate()) {

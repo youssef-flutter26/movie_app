@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app/core/helper/on_generate_route.dart';
 import 'package:movie_app/core/services/custom_bloc_observer.dart';
 import 'package:movie_app/core/services/git_it_service.dart';
@@ -23,14 +24,17 @@ class MovieApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.dark,
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: AppColors.kprimaryColor,
+    return ScreenUtilInit(
+      designSize: Size(375, 812),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        themeMode: ThemeMode.dark,
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: AppColors.kprimaryColor,
+        ),
+        onGenerateRoute: onGenerateRoute,
+        initialRoute: SplashView.routeName,
       ),
-      onGenerateRoute: onGenerateRoute,
-      initialRoute: SplashView.routeName,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/utils/app_images.dart';
 import 'package:movie_app/features/onboarding/presentation/views/on_boarding_view.dart';
@@ -26,7 +27,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(Assets.imagesCinemax, height: 138, width: 138),
+            SvgPicture.asset(Assets.imagesCinemax, height: 138.h, width: 138.w),
           ],
         ),
       ],

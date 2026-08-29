@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/core/utils/app_images.dart';
 import 'package:movie_app/features/auth/presentation/views/login_view.dart';
 import 'package:movie_app/features/onboarding/presentation/widgets/custom_page_view.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});
@@ -40,7 +41,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
         children: [
           Expanded(child: CustomPageView(pageController: pageController)),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 80),
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 80.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
