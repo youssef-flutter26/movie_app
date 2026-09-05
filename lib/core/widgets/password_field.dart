@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/widgets/custom_text_field.dart';
-import 'package:movie_app/features/auth/presentation/widgets/sign_up_view_body.dart';
 
 class PasswordField extends StatefulWidget {
   const new({super.key, this.onSaved});

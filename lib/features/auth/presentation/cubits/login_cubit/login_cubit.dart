@@ -25,7 +25,7 @@ class LoginCubit extends Cubit<LoginState> {
     final result = await authRepo.signInWithGoogle();
 
     result.fold((failure) {
-      log('=== GOOGLE SIGN IN ERROR: ${failure.message} ==='); // <--- أضفه هنا
+      log('=== GOOGLE SIGN IN ERROR: ${failure.message} ===');
       emit(LoginFailure(message: failure.message));
     }, (userEntity) => emit(LoginSuccess(userEntity: userEntity)));
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:movie_app/constant.dart';
+import 'package:movie_app/core/services/shared_pref.dart';
 import 'package:movie_app/core/utils/app_images.dart';
 import 'package:movie_app/features/auth/presentation/views/login_view.dart';
 import 'package:movie_app/features/onboarding/presentation/widgets/custom_page_view.dart';
@@ -45,7 +47,6 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Indicators
                 SvgPicture.asset(
                   currentPage == 0
                       ? Assets.imagesSlider1
@@ -55,17 +56,20 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                 ),
                 // Next Button
                 GestureDetector(
-                  onTap: () {
+                  onTap: () async {
                     if (currentPage < 2) {
                       pageController.nextPage(
                         duration: const Duration(milliseconds: 300),
                         curve: Curves.easeInOut,
                       );
                     } else {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        LoginView.routeName,
-                      );
+                      await SharedPref.setBool(KiOnBoardingViewSeen, true);
+                      if (context.mounted) {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          LoginView.routeName,
+                        );
+                      }
                     }
                   },
                   child: SvgPicture.asset(

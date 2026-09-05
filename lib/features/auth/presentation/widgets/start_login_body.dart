@@ -8,6 +8,7 @@ import 'package:movie_app/core/widgets/password_field.dart';
 import 'package:movie_app/features/auth/presentation/cubits/login_cubit/login_cubit.dart';
 import 'package:movie_app/features/auth/presentation/views/reset_password_view.dart';
 import 'package:movie_app/features/auth/presentation/widgets/custom_button.dart';
+import 'package:movie_app/features/home/presentation/views/home_view.dart';
 
 class StartLoginBody extends StatefulWidget {
   const new({super.key});

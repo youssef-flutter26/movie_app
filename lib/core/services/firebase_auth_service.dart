@@ -7,11 +7,16 @@ class FirebaseAuthService {
   Future<User> createUserWithEmailAndPassword({
     required String email,
     required String password,
+    required String name,
   }) async {
     try {
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
-      return credential.user!;
+
+      await credential.user?.updateDisplayName(name);
+      await credential.user?.reload();
+
+      return FirebaseAuth.instance.currentUser!;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         throw CustomException(message: 'The password provided is too weak.');
@@ -94,5 +99,10 @@ class FirebaseAuthService {
     return (await FirebaseAuth.instance.signInWithCredential(
       facebookAuthCredential,
     )).user!;
+  }
+
+  bool isUserLoggedIn() {
+    final user = FirebaseAuth.instance.currentUser;
+    return user != null;
   }
 }
