@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:movie_app/core/services/firebase_auth_service.dart';
 import 'package:movie_app/features/auth/data/repos/auth_repo_impl.dart';
@@ -10,11 +11,15 @@ import 'package:movie_app/features/home/data/repos/home_repo.dart';
 import 'package:movie_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:movie_app/features/home/data_source.dart/home_api_service.dart';
 import 'package:movie_app/features/home/presentation/cubits/home_cubit/home_cubit.dart';
+import 'package:movie_app/features/profile/data/repos/legal_policy_repo.dart';
+import 'package:movie_app/features/profile/data/repos/profile_repo.dart';
+import 'package:movie_app/features/profile/data/repos/profile_repo_impl.dart';
+import 'package:movie_app/features/profile/data_source/profile_api_service.dart';
+import 'package:movie_app/features/profile/presentation/cubits/legal_policy_cubit.dart';
 import 'package:movie_app/features/search/data/search_repo_impl.dart';
 import 'package:movie_app/features/search/data/serch_repo.dart';
 import 'package:movie_app/features/search/data_source/search_api_service.dart';
 import 'package:movie_app/features/search/presentation/cubits/search_cubit/search_cubit_cubit.dart';
-import 'package:dio/dio.dart';
 
 final getIt = GetIt.instance;
 
@@ -23,17 +28,30 @@ void setup() {
 
   getIt.registerSingleton<FirebaseAuthService>(FirebaseAuthService());
   getIt.registerSingleton<HomeApiService>(HomeApiService(getIt<Dio>()));
+  getIt.registerSingleton<ProfileApiService>(ProfileApiService(getIt<Dio>()));
+
   getIt.registerSingleton<SearchApiService>(SearchApiService(getIt<Dio>()));
   getIt.registerSingleton<MovieDetailsApiService>(
     MovieDetailsApiService(getIt<Dio>()),
   );
+
   getIt.registerSingleton<MovieDetailsRepo>(
     MovieDetailsImpl(getIt<MovieDetailsApiService>()),
+  );
+
+  getIt.registerSingleton<ProfileRepo>(
+    ProfileRepoImpl(getIt<ProfileApiService>()),
+  );
+
+  // تسجيل LegalPolicyRepo
+  getIt.registerSingleton<LegalPolicyRepo>(
+    LegalPolicyRepoImpl(getIt<ProfileApiService>()),
   );
 
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImpl(firebaseAuthService: getIt<FirebaseAuthService>()),
   );
+
   getIt.registerFactory<SignupCubit>(() => SignupCubit(getIt<AuthRepo>()));
 
   getIt.registerSingleton<HomeRepo>(HomeRepoImpl(getIt<HomeApiService>()));
@@ -43,4 +61,9 @@ void setup() {
     SearchRepoImpl(getIt<SearchApiService>()),
   );
   getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt<SearchRepo>()));
+
+  // تسجيل LegalPolicyCubit
+  getIt.registerFactory<LegalPolicyCubit>(
+    () => LegalPolicyCubit(getIt<LegalPolicyRepo>()),
+  );
 }

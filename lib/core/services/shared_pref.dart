@@ -1,16 +1,51 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPref {
-  static late SharedPreferences __instance;
+  static late SharedPreferences _instance;
+
   static Future<void> init() async {
-    __instance = await SharedPreferences.getInstance();
+    _instance = await SharedPreferences.getInstance();
   }
 
+  // --- Boolean ---
   static Future<bool> setBool(String key, bool value) async {
-    return await __instance.setBool(key, value);
+    return await _instance.setBool(key, value);
   }
 
-  static getBool(String key) {
-    return __instance.getBool(key) ?? false;
+  static bool getBool(String key) {
+    return _instance.getBool(key) ?? false;
+  }
+
+  // --- String ---
+  static Future<bool> setString(String key, String value) async {
+    return await _instance.setString(key, value);
+  }
+
+  static String getString(String key) {
+    return _instance.getString(key) ?? '';
+  }
+
+  static String? getStringNullable(String key) {
+    return _instance.getString(key);
+  }
+
+  // --- Int ---
+  static Future<bool> setInt(String key, int value) async {
+    return await _instance.setInt(key, value);
+  }
+
+  static int getInt(String key) {
+    return _instance.getInt(key) ?? 0;
+  }
+
+  // --- Clear / Remove ---
+  static Future<bool> remove(String key) async {
+    return await _instance.remove(key);
+  }
+
+  static Future<bool> clear() async {
+    return await _instance.clear();
   }
 }

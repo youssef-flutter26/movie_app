@@ -1,1 +1,4 @@
 const KiOnBoardingViewSeen = 'isOnBoardingViewSeen';
+// استبدل Your_TMDB_Token بالتوكن الحقيقي الخاص بك من موقع TMDB
+const String tmdbToken =
+    'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YTdlYTA5NmUxMjVlMDUxM2JlNGMxYmE5NTFiZDFiZCIsIm5iZiI6MTc4ODEzNDEyOS42NDYwMDAxLCJzdWIiOiI2YTk0YzJmMWVlZDJmM2Y5NThiMTJiOWUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.4Itzj_x0pI33QtQuXstB2ETrK2RG7UEBiuMZ6PUJIj8';

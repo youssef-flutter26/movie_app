@@ -150,6 +150,10 @@ class Assets {
   /// assets/images/spiderimage.png
   static const String imagesSpiderimage = "assets/images/spiderimage.png";
 
+  /// Assets for imagesTime
+  /// assets/images/time.png
+  static const String imagesTime = "assets/images/time.png";
+
   /// Assets for imagesVector
   /// assets/images/Vector.png
   static const String imagesVector = "assets/images/Vector.png";

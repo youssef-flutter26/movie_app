@@ -27,7 +27,7 @@ class AuthRepoImpl extends AuthRepo {
         password: password,
         name: name,
       );
-      return right(UserModel.fromFirebaseUser(user));
+      return right(UserAuthModel.fromFirebaseUser(user));
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
@@ -46,7 +46,7 @@ class AuthRepoImpl extends AuthRepo {
         password: password,
       );
 
-      return right(UserModel.fromFirebaseUser(user));
+      return right(UserAuthModel.fromFirebaseUser(user));
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
@@ -58,7 +58,7 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failure, UserEntity>> signInWithGoogle() async {
     try {
       var user = await firebaseAuthService.signInWithGoogle();
-      return right(UserModel.fromFirebaseUser(user!));
+      return right(UserAuthModel.fromFirebaseUser(user!));
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e, stackTrace) {
@@ -73,7 +73,7 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failure, UserEntity>> signInWithFacebook() async {
     try {
       var user = await firebaseAuthService.signInWithFacebook();
-      return right(UserModel.fromFirebaseUser(user!));
+      return right(UserAuthModel.fromFirebaseUser(user!));
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e, stackTrace) {

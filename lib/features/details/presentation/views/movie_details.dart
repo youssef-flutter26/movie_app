@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/models/movie_model.dart';
 import 'package:movie_app/core/services/git_it_service.dart';
+import 'package:movie_app/core/services/notification_service.dart';
 import 'package:movie_app/core/utils/app_styles.dart';
 import 'package:movie_app/core/widgets/custom_nav_bar.dart';
 import 'package:movie_app/features/details/data/repos/movie_details_repo.dart';
@@ -74,6 +75,15 @@ class MovieDetails extends StatelessWidget {
                         return IconButton(
                           onPressed: () {
                             context.read<WishlistCubit>().toggleWishlist(movie);
+
+                            NotificationService.showNotification(
+                              title: isFav
+                                  ? 'Movie Removed from Wishlist'
+                                  : 'Movie Added to Wishlist',
+                              body: isFav
+                                  ? '${movie.title} has been removed from your wishlist'
+                                  : '${movie.title} has been added to your wishlist',
+                            );
                           },
                           icon: Icon(
                             isFav

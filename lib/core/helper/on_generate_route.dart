@@ -11,6 +11,10 @@ import 'package:movie_app/features/home/presentation/widgets/most_popular_movie.
 import 'package:movie_app/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:movie_app/features/profile/presentation/views/profile_view.dart';
 import 'package:movie_app/features/profile/presentation/widgets/edit_profile.dart';
+import 'package:movie_app/features/profile/presentation/widgets/language_view.dart';
+import 'package:movie_app/features/profile/presentation/widgets/legal_and_policy.dart';
+import 'package:movie_app/features/profile/presentation/widgets/log_out_button.dart';
+import 'package:movie_app/features/profile/presentation/widgets/notification.dart';
 import 'package:movie_app/features/search/presentation/views/search_result.dart';
 import 'package:movie_app/features/search/presentation/views/search_view.dart';
 import 'package:movie_app/features/splash/presentation/views/splash_view.dart';
@@ -20,6 +24,16 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case SplashView.routeName:
       return MaterialPageRoute(builder: (context) => const SplashView());
+    case LanguageView.routeName:
+      return MaterialPageRoute(builder: (context) => const LanguageView());
+    case LogOutButtonDialog.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const LogOutButtonDialog(),
+      );
+    case NotificationView.routeName:
+      return MaterialPageRoute(builder: (context) => const NotificationView());
+    case LegalAndPolicy.routeName:
+      return MaterialPageRoute(builder: (context) => const LegalAndPolicy());
     case EditProfile.routeName:
       return MaterialPageRoute(builder: (context) => const EditProfile());
     case ProfileView.routeName:
