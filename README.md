@@ -52,5 +52,4 @@ samples, guidance on mobile development, and a full API reference.
 </p>
 ## App Demo
 
-https://github.com/youssef-flutter26/movie_app/raw/master/demo.mp4
-
+<a href="https://github.com/youssef-flutter26/movie_app/blob/master/demo.mp4" target="_blank">Watch App Demo Video</a>
