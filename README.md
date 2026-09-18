@@ -50,3 +50,6 @@ samples, guidance on mobile development, and a full API reference.
   <img src="screenshots/Screenshot_1789137941.png" width="220" style="margin: 5px;" />
   <img src="screenshots/Screenshot_1789137948.png" width="220" style="margin: 5px;" />
 </p>
+## App Demo
+
+https://github.com/youssef-flutter26/movie_app/raw/main/demo.mp4
