@@ -1,7 +1,9 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/constant.dart';
 import 'package:movie_app/core/helper/on_generate_route.dart';
 import 'package:movie_app/core/services/custom_bloc_observer.dart';
 import 'package:movie_app/core/services/git_it_service.dart';
@@ -15,6 +17,21 @@ import 'package:movie_app/features/wishlist/data/wishlist_local_data_source.dart
 import 'package:movie_app/features/wishlist/presentation/cubits/cubit/wishlist_cubit.dart';
 import 'package:movie_app/firebase_options.dart';
 
+void checkMyModels() async {
+  try {
+    final response = await Dio().get(
+      'https://generativelanguage.googleapis.com/v1beta/models?key=$aiAPiKey',
+    );
+    print('================ AVAILABLE MODELS ================');
+    for (var model in response.data['models']) {
+      print(model['name']);
+    }
+    print('==================================================');
+  } catch (e) {
+    print('Error listing models: $e');
+  }
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPref.init();
@@ -22,10 +39,13 @@ void main() async {
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  // تهيئة خدمة الإشعارات المحلية
   await NotificationService.init();
 
   setup();
+
+  // فحص الموديلات المتاحة
+  checkMyModels();
+
   runApp(const MovieApp());
 }
 
@@ -41,21 +61,21 @@ class MovieApp extends StatelessWidget {
           BlocProvider<WishlistCubit>(
             create: (context) =>
                 WishlistCubit(WishlistLocalDataSource())..fetchWishlist(),
-          ), // BlocProvider
+          ),
           BlocProvider<ProfileCubit>(
             create: (context) => ProfileCubit(getIt<ProfileRepo>()),
-          ), // BlocProvider
+          ),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           themeMode: ThemeMode.dark,
           theme: ThemeData.dark().copyWith(
             scaffoldBackgroundColor: AppColors.kprimaryColor,
-          ), // ThemeData
+          ),
           onGenerateRoute: onGenerateRoute,
           initialRoute: SplashView.routeName,
-        ), // MaterialApp
-      ), // MultiBlocProvider
-    ); // ScreenUtilInit
+        ),
+      ),
+    );
   }
 }

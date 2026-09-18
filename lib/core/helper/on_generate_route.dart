@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/features/aiChat/persentation/views/ai_chat_view.dart';
 import 'package:movie_app/features/auth/presentation/views/create_new_password_view.dart';
 import 'package:movie_app/features/auth/presentation/views/login_view.dart';
 import 'package:movie_app/features/auth/presentation/views/reset_password_view.dart';
@@ -24,6 +25,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case SplashView.routeName:
       return MaterialPageRoute(builder: (context) => const SplashView());
+    case AiChatView.routeName:
+      return MaterialPageRoute(builder: (context) => const AiChatView());
     case LanguageView.routeName:
       return MaterialPageRoute(builder: (context) => const LanguageView());
     case LogOutButtonDialog.routeName:

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/services/git_it_service.dart';
+import 'package:movie_app/core/utils/app_colors.dart';
 import 'package:movie_app/core/widgets/custom_nav_bar.dart';
+import 'package:movie_app/features/aiChat/persentation/views/ai_chat_view.dart';
 import 'package:movie_app/features/home/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:movie_app/features/home/presentation/widgets/home_view_body.dart';
 import 'package:movie_app/features/search/presentation/views/search_view.dart';
@@ -42,6 +44,13 @@ class _HomeViewState extends State<HomeView> {
               setState(() {
                 selectedIndex = index;
               });
+            },
+          ),
+          floatingActionButton: FloatingActionButton(
+            child: const Icon(Icons.chat),
+            backgroundColor: AppColors.kprimaryColor,
+            onPressed: () {
+              Navigator.pushNamed(context, AiChatView.routeName);
             },
           ),
         ),

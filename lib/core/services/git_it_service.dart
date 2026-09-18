@@ -1,6 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:movie_app/core/services/firebase_auth_service.dart';
+import 'package:movie_app/features/aiChat/data/repos/ai_chat_repo.dart';
+import 'package:movie_app/features/aiChat/data/repos/ai_chat_repo_impl.dart';
+import 'package:movie_app/features/aiChat/data_source/ai_api_service.dart';
+import 'package:movie_app/features/aiChat/persentation/cubits/aiChat/ai_chat_cubit.dart';
 import 'package:movie_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:movie_app/features/auth/domain/repos/auth_repo.dart';
 import 'package:movie_app/features/auth/presentation/cubits/signup_cubit/signup_cubit.dart';
@@ -43,11 +47,12 @@ void setup() {
     ProfileRepoImpl(getIt<ProfileApiService>()),
   );
 
-  // تسجيل LegalPolicyRepo
   getIt.registerSingleton<LegalPolicyRepo>(
     LegalPolicyRepoImpl(getIt<ProfileApiService>()),
   );
+  getIt.registerSingleton<AiApiService>(AiApiService(getIt<Dio>()));
 
+  getIt.registerSingleton<AiChatRepo>(AiChatRepoImpl(getIt<AiApiService>()));
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImpl(firebaseAuthService: getIt<FirebaseAuthService>()),
   );
@@ -62,8 +67,8 @@ void setup() {
   );
   getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt<SearchRepo>()));
 
-  // تسجيل LegalPolicyCubit
   getIt.registerFactory<LegalPolicyCubit>(
     () => LegalPolicyCubit(getIt<LegalPolicyRepo>()),
   );
+  getIt.registerFactory<AiChatCubit>(() => AiChatCubit(getIt<AiChatRepo>()));
 }
