@@ -52,4 +52,5 @@ samples, guidance on mobile development, and a full API reference.
 </p>
 ## App Demo
 
-<video src="demo.mp4" controls width="100%"></video>
+https://github.com/youssef-flutter26/movie_app/raw/master/demo.mp4
+
